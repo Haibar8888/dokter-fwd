@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models\ManagementAccess;
+namespace App\Models\Operational;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PermisionRole extends Model
+class Doctor extends Model
 {
      use SoftDeletes;
 
-    public $table = 'permision_role';
+    public $table = 'doctor';
 
     protected $dates = [
         'created_at',
@@ -20,8 +20,10 @@ class PermisionRole extends Model
 
     // yang diperbolekan untuk diisi
     protected $fillable = [
-        'permision_id',
-        'role_id',
+        'specialist_id',
+        'name',
+        'fee',
+        'photo',
         'created_at',
         'updated_at',
         'deleted_at',

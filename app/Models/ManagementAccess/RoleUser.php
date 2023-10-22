@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PermisionRole extends Model
+class RoleUser extends Model
 {
      use SoftDeletes;
 
-    public $table = 'permision_role';
+    public $table = 'role_user';
 
     protected $dates = [
         'created_at',
@@ -20,7 +20,7 @@ class PermisionRole extends Model
 
     // yang diperbolekan untuk diisi
     protected $fillable = [
-        'permision_id',
+        'user_id',
         'role_id',
         'created_at',
         'updated_at',
