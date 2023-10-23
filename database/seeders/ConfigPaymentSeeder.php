@@ -19,7 +19,7 @@ class ConfigPaymentSeeder extends Seeder
         $configPayment = [
                 [
                     'fee' => '10000',
-                    'fat' => '20' // is percen
+                    'vat' => '20' // is percen
                 ]
             ];
 

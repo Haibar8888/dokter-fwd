@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use app\Models\MasterData\Consultation;
+use App\Models\MasterData\Consultation;
 
 class ConsultationSeeder extends Seeder
 {

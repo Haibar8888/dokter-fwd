@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\MasterData\ConfigPayment;
+use App\Models\MasterData\Consultation;
+use App\Models\MasterData\TypeUser;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 Specialist::class,
+                ConfigPayment::class,
+                Consultation::class,
+                TypeUser::class,
             ]
         );
     }
