@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Models\MasterData;
+namespace App\Models\ManagementAccess;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Specialist extends Model
+class RoleUser extends Model
 {
     use HasFactory;
-    
 }
