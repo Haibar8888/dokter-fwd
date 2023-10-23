@@ -2,14 +2,6 @@
 
 namespace App\Models\ManagementAccess;
 
-<<<<<<< HEAD
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class DetailUser extends Model
-{
-    use HasFactory;
-=======
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -38,5 +30,4 @@ class DetailUser extends Model
         'updated_at',
         'deleted_at',
     ];
->>>>>>> 0c7adc5da90b60b7df9d6efd0c9dd1a417551d1a
 }

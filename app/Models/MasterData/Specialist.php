@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Specialist extends Model
 {
-<<<<<<< HEAD
-    use HasFactory;
-    
-=======
-     use SoftDeletes;
+    use SoftDeletes;
 
     public $table = 'specialist';
 
@@ -30,5 +26,4 @@ class Specialist extends Model
         'updated_at',
         'deleted_at',
     ];
->>>>>>> 0c7adc5da90b60b7df9d6efd0c9dd1a417551d1a
 }
