@@ -2,7 +2,6 @@
 
 namespace App\Models\Operational;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -31,4 +30,21 @@ class Appointment extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function doctor () {
+        return $this->belongsTo('app\Models\Operational\Doctor','doctor_id','id');
+    }
+
+    public function transaction () {
+        return $this->hasOne('app\Models\Operational\Transaction','appointment_id');
+    }
+
+    public function consultation () {
+        return $this->belongsTo('app\Models\MasterData\Consultation','consultation_id','id');
+    }
+
+    public function user () {
+        return $this->belongsTo('app\Models\User','user_id','id');
+    }
+
 }

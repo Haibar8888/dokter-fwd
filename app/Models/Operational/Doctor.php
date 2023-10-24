@@ -28,4 +28,12 @@ class Doctor extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function specialist () {
+        return $this->belongsTo('app\Models\MasterData\Specialist','specialist_id','id');
+    }
+
+    public function appointment() {
+        return $this->hasMany('app\Models\Operational\Appointment','doctor_id');
+    }
 }

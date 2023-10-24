@@ -25,4 +25,8 @@ class TypeUser extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function detail_user () {
+        return $this->hasMany('app\Models\ManagementAccess\DetailUser','type_user_id');
+    }
 }

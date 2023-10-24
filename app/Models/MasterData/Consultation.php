@@ -25,4 +25,8 @@ class Consultation extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function appointment () {
+        return $this->hasMany('app\Models\Operational\Appointment','consultation_id');
+    }
 }
