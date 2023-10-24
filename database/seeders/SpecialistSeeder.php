@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-
 use App\Models\MasterData\Specialist;
 
 class SpecialistSeeder extends Seeder
@@ -20,23 +19,34 @@ class SpecialistSeeder extends Seeder
         $specialist = [
             [
                 'name' => 'Dermatology',
-                'price' => '100000'
+                'price' => '100000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                
             ],
             [
                 'name' => 'Neurology',
-                'price' => '200000'
+                'price' => '200000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'name' => 'Dentist',
-                'price' => '150000'
+                'price' => '150000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'name' => 'Allergists',
-                'price' => '300000'
+                'price' => '300000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'name' => 'Cardiologists',
-                'price' => '320000'
+                'price' => '320000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
 
         ];

@@ -19,7 +19,9 @@ class ConfigPaymentSeeder extends Seeder
         $configPayment = [
                 [
                     'fee' => '10000',
-                    'vat' => '20' // is percen
+                    'vat' => '20', // is percen
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ]
             ];
 
