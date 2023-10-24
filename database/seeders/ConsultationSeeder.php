@@ -17,13 +17,19 @@ class ConsultationSeeder extends Seeder
         //
         $consultation = [
                 [
-                    'name' => 'Jantung Sesak'
+                    'name' => 'Jantung Sesak',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'name' => 'Tekanan Darah Tinggi'
+                    'name' => 'Tekanan Darah Tinggi',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'name' => 'Gangguan Irama Jantung'
+                    'name' => 'Gangguan Irama Jantung',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ],
             ];
         
