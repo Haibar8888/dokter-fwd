@@ -31,7 +31,7 @@ class LandingController extends Controller
     public function index()
     {
         //
-        return "halaman landing page";
+        return view('pages.frontsite.landing-page.index');
     }
 
     /**
