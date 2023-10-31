@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Fronsite\AppointmentController;
+use App\Http\Controllers\Fronsite\LandingController;
+use App\Http\Controllers\Fronsite\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::resource('/', LandingController::class);
+
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::resource('appointment', AppointmentController::class);
+    Route::resource('payment', PaymentController::class);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::group(['prefix' => 'backsite', 'as' => '.backsite', 'middleware' => ['auth:sanctum', 'verified']], function () {
+    return view('dashboard');
+}); 
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

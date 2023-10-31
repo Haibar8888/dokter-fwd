@@ -18,7 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use SoftDeletes;
+    // use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -61,16 +61,18 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function detail_user ()
+    public function detail_user()
     {
-        return $this->hasOne('app\Models\ManagementAccess\DetailUser','user_id');
+        return $this->hasOne('app\Models\ManagementAccess\DetailUser', 'user_id');
     }
 
-    public function appointment () {
-        return $this->hasMany('app\Models\Operational\Appointment','user_id','id');
+    public function appointment()
+    {
+        return $this->hasMany('app\Models\Operational\Appointment', 'user_id', 'id');
     }
 
-    public function role_user () {
-        return $this->hasMany('app\Models\ManagementAccess\RoleUser','user_id');
+    public function role_user()
+    {
+        return $this->hasMany('app\Models\ManagementAccess\RoleUser', 'user_id');
     }
 }
