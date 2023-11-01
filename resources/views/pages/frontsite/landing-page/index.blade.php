@@ -91,7 +91,7 @@
               <!-- CTA Button -->
               <div class="grid lg:flex flex-wrap mt-20 gap-5">
                 <a
-                  href="src/pages/sign-up.html"
+                  href="{{route('register')}}"
                   class="text-white text-lg font-medium text-center bg-[#0D63F3] rounded-full px-12 py-3"
                 >
                   Sign Up
