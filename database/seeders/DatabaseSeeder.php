@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\MasterData\ConfigPayment;
 use App\Models\MasterData\Consultation;
 use App\Models\MasterData\TypeUser;
+use App\Models\MasterData\Specialist;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

@@ -16,13 +16,14 @@ class SpecialistSeeder extends Seeder
     public function run()
     {
         //
+        //
         $specialist = [
             [
                 'name' => 'Dermatology',
                 'price' => '100000',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-                
+
             ],
             [
                 'name' => 'Neurology',
