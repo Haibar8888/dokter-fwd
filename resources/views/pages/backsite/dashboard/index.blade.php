@@ -15,7 +15,6 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -38,9 +37,10 @@
             </div>
         </div>
         {{-- end breadcrumd --}}
-
+        <div class="">
+            <h1>Hello World</h1>
+        </div>
     </div>
 </div>
 <!-- END: Content-->
-
 @endsection

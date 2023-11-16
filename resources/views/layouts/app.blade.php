@@ -25,7 +25,7 @@
         @include('components.backsite.footer')
 
         @stack('before-script')
-            @include('includes.backsite.script')
+            @include('includes.backsite.script')    
         @stack('after-script')
 
     </body>

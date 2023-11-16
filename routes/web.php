@@ -1,9 +1,20 @@
 <?php
 
+use App\Http\Controllers\Backsite\AppointmentController as BacksiteAppointmentController;
+use App\Http\Controllers\Backsite\ConfigPaymentController;
+use App\Http\Controllers\Backsite\ConsultationController;
 use App\Http\Controllers\Backsite\DashboardController;
+use App\Http\Controllers\Backsite\DoctorController;
+use App\Http\Controllers\Backsite\PermisionController;
+use App\Http\Controllers\Backsite\RoleController;
+use App\Http\Controllers\Backsite\SpecialistController;
+use App\Http\Controllers\Backsite\TransactionController;
+use App\Http\Controllers\Backsite\TypeUserController;
+use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Fronsite\AppointmentController;
 use App\Http\Controllers\Fronsite\LandingController;
 use App\Http\Controllers\Fronsite\PaymentController;
+use App\Models\MasterData\Consultation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +41,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('dashboard', DashboardController::class);
+    Route::resource('permision', PermisionController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('type-user', TypeUserController::class);
+    Route::resource('config-payment', ConfigPaymentController::class);
+    Route::resource('consultation', ConsultationController::class);
+    Route::resource('specialist', SpecialistController::class);
+    Route::resource('appointment', BacksiteAppointmentController::class);
+    Route::resource('transaction', TransactionController::class);
+    Route::resource('doctor', DoctorController::class);
 }); 
 
 // Route::middleware([
