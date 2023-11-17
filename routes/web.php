@@ -14,7 +14,6 @@ use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Fronsite\AppointmentController;
 use App\Http\Controllers\Fronsite\LandingController;
 use App\Http\Controllers\Fronsite\PaymentController;
-use App\Models\MasterData\Consultation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,9 +43,11 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('permision', PermisionController::class);
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);
+    // type user
     Route::resource('type-user', TypeUserController::class);
     Route::resource('config-payment', ConfigPaymentController::class);
     Route::resource('consultation', ConsultationController::class);
+    // specialist
     Route::resource('specialist', SpecialistController::class);
     Route::resource('appointment', BacksiteAppointmentController::class);
     Route::resource('transaction', TransactionController::class);

@@ -5,6 +5,19 @@ namespace App\Http\Controllers\Backsite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+//request validation form
+use App\Http\Requests\Doctor\StoreDoctorRequest;
+use App\Http\Requests\Doctor\UpdateDoctorRequest;
+
+// sweet alert
+use RealRashid\SweetAlert\Facades\Alert;
+
+// models
+use App\Models\Operational\Doctor;
+
 class DoctorController extends Controller
 {
     /**
@@ -31,6 +44,7 @@ class DoctorController extends Controller
     public function create()
     {
         //
+        return abort(404);
     }
 
     /**

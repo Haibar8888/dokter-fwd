@@ -5,6 +5,19 @@ namespace App\Http\Controllers\Backsite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+//request validation form
+use App\Http\Requests\Specialist\StoreSpecialistRequest;
+use App\Http\Requests\Specialist\UpdateSpecialistRequest;
+
+// sweet alert
+use RealRashid\SweetAlert\Facades\Alert;
+
+// models
+use App\Models\MasterData\Specialist;
+
 class SpecialistController extends Controller
 {
     /**
@@ -20,7 +33,9 @@ class SpecialistController extends Controller
     public function index()
     {
         //
-        return view('pages.backsite.master-data.specialist.index');
+        $specialist = Specialist::orderBy('created_at', 'desc')->get();
+
+        return view('pages.backsite.master-data.specialist.index', compact('specialist'));
     }
 
     /**
@@ -31,6 +46,7 @@ class SpecialistController extends Controller
     public function create()
     {
         //
+        return abort(404);
     }
 
     /**
@@ -39,9 +55,16 @@ class SpecialistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSpecialistRequest $request)
     {
-        //
+        //$data untuk menampung semua request
+        $data = $request->all();
+
+        // store data ke databases
+        $specialist = Specialist::create($data);
+
+        alert()->success('Success Message', 'Data berhasil ditambahkan');
+        return redirect()->route('backsite.specialist.index');
     }
 
     /**
@@ -50,9 +73,10 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Specialist $specialist)
     {
         //
+        return view('pages.backsite.master-data.specialist.show', compact('specialist'));
     }
 
     /**
@@ -61,9 +85,10 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Specialist $specialist)
     {
         //
+        return view('pages.backsite.master-data.specialist.edit', compact('specialist'));
     }
 
     /**
@@ -73,9 +98,15 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSpecialistRequest $request, Specialist $specialist)
     {
         //
+        $data = $request->all();
+
+        $specialist->update($data);
+
+        alert()->success('Success Message', 'Data berhasil diupdate');
+        return redirect()->route('backsite.specialist.index');
     }
 
     /**
@@ -84,8 +115,12 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Specialist $specialist)
     {
         //
+        $specialist->delete();
+
+        alert()->success('Sucesss Message', 'Data berhasil dihapus');
+        return back();
     }
 }

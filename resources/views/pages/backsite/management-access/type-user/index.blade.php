@@ -37,7 +37,7 @@
             </div>
         </div>
         {{-- end breadcrumd --}}
-        <div class="">
+        <div class="konten">
             <h1>Halaman Type User</h1>
         </div>
     </div>
