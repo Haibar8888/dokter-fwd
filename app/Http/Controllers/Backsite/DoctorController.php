@@ -17,6 +17,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 // models
 use App\Models\Operational\Doctor;
+use App\Models\MasterData\Specialist;
 
 class DoctorController extends Controller
 {
@@ -32,8 +33,13 @@ class DoctorController extends Controller
 
     public function index()
     {
-        //
-        return view('pages.backsite.operational.doctor.index');
+        //for table
+        $doctor = Doctor::orderBy('created_at', 'desc')->get();
+
+        //for select2
+        $specialist = Specialist::orderBy('name', 'asc')->get();
+
+        return view('pages.backsite.operational.doctor.index', compact('doctor', 'specialist'));
     }
 
     /**
@@ -53,9 +59,16 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDoctorRequest $request)
     {
-        //
+        //$data untuk menampung semua request
+        $data = $request->all();
+
+        // store data ke databases
+        $doctor = Doctor::create($data);
+
+        alert()->success('Success Message', 'Data berhasil ditambahkan');
+        return redirect()->route('backsite.doctor.index');
     }
 
     /**
@@ -64,9 +77,10 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Doctor $doctor)
     {
         //
+        return view('pages.backsite.operational.doctor.show', compact('doctor'));
     }
 
     /**
@@ -75,9 +89,12 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Doctor $doctor)
     {
-        //
+        //for select2
+        $specialist = Specialist::orderBy('name', 'asc')->get();
+
+        return view('pages.backsite.operational.doctor.show', compact('doctor'));
     }
 
     /**
@@ -87,9 +104,15 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
         //
+        $data = $request->all();
+
+        $doctor->update($data);
+
+        alert()->success('Success Message', 'Data berhasil diupdate');
+        return redirect()->route('backsite.doctor.index');
     }
 
     /**
@@ -98,8 +121,12 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Doctor $doctor)
     {
         //
+        $doctor->delete();
+
+        alert()->success('Sucesss Message', 'Data berhasil dihapus');
+        return back();
     }
 }

@@ -5,6 +5,15 @@ namespace App\Http\Controllers\Backsite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//request validation form
+use App\Http\Requests\ConfigPayment\UpdateConfigPaymentRequest;
+
+// sweet alert
+use RealRashid\SweetAlert\Facades\Alert;
+
+// models
+use App\Models\MasterData\ConfigPayment;
+
 class ConfigPaymentController extends Controller
 {
     /**
@@ -20,7 +29,8 @@ class ConfigPaymentController extends Controller
     public function index()
     {
         //
-        return view('pages.backsite.master-data.config-payment.index');
+        $config_payment = ConfigPayment::all();
+        return view('pages.backsite.master-data.config-payment.index', compact('config_payment'));
     }
 
     /**
@@ -31,6 +41,7 @@ class ConfigPaymentController extends Controller
     public function create()
     {
         //
+        return abort(404);
     }
 
     /**
@@ -42,6 +53,7 @@ class ConfigPaymentController extends Controller
     public function store(Request $request)
     {
         //
+        return abort(404);
     }
 
     /**
@@ -53,6 +65,7 @@ class ConfigPaymentController extends Controller
     public function show($id)
     {
         //
+        return abort(404);
     }
 
     /**
@@ -61,9 +74,10 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ConfigPayment $config_payment)
     {
         //
+        return view('pages.backsite.master-data.config-payment.index', compact('config-payment'));
     }
 
     /**
@@ -73,9 +87,15 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConfigPaymentRequest $request, ConfigPayment $config_payment)
     {
         //
+        $data = $request->all();
+
+        $config_payment->update($data);
+
+        alert()->success('Success Message', 'Data berhasil diupdate');
+        return redirect()->route('backsite.config-payment.index');
     }
 
     /**
@@ -84,8 +104,12 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ConfigPayment $config_payment)
     {
         //
+        $config_payment->delete();
+
+        alert()->success('Sucesss Message', 'Data berhasil dihapus');
+        return back();
     }
 }
