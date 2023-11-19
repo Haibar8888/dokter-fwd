@@ -5,6 +5,19 @@ namespace App\Http\Controllers\Backsite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+//request validation form
+use App\Http\Requests\Role\StoreRoleRequest;
+use App\Http\Requests\Role\UpdateRoleRequest;
+
+// sweet alert
+use RealRashid\SweetAlert\Facades\Alert;
+
+// models
+use App\Models\ManagementAccess\Role;
+
 class RoleController extends Controller
 {
     /**
@@ -30,6 +43,7 @@ class RoleController extends Controller
     public function create()
     {
         //
+        return abort(404);
     }
 
     /**
@@ -38,9 +52,14 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
         //
+        $data = $request->all();
+        $role = Role::create($data);
+
+        alert()->success('Success Message', 'Data berhasil ditambahkan');
+        return redirect()->route('backsite.role.index');
     }
 
     /**
@@ -49,9 +68,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
         //
+        return view('pages.backsite.management-access.role.show', compact('role'));
     }
 
     /**
@@ -60,9 +80,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
         //
+        return view('pages.backsite.managemen-access.role.edit', compact('role'));
     }
 
     /**
@@ -72,9 +93,15 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
         //
+        $data = $request->all();
+
+        $role->update($data);
+
+        alert()->success('Success Message', 'Data berhasil diupdate');
+        return redirect()->route('backsite.role.index');
     }
 
     /**
@@ -83,8 +110,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
+        $role->delete();
+        alert()->success('Sucesss Message', 'Data berhasil dihapus');
+        return back();
     }
 }

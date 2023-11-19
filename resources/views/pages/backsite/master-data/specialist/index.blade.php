@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     </section>
-                </div>
+        </div>
         
             {{-- @can('specialist_table') --}}
                 <div class="content-body">

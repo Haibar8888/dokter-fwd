@@ -5,6 +5,15 @@ namespace App\Http\Controllers\Backsite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+// sweet alert
+use RealRashid\SweetAlert\Facades\Alert;
+
+// models
+use App\Models\ManagementAccess\Permision;
+
 class PermisionController extends Controller
 {
     /**
@@ -31,6 +40,7 @@ class PermisionController extends Controller
     public function create()
     {
         //
+        return abort(404);
     }
 
     /**
@@ -42,6 +52,7 @@ class PermisionController extends Controller
     public function store(Request $request)
     {
         //
+        return abort(404);
     }
 
     /**
@@ -50,9 +61,10 @@ class PermisionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permision $permision)
     {
         //
+        return view('pages.backsite.management-access.permisio.show', compact('permision'));
     }
 
     /**
@@ -64,6 +76,7 @@ class PermisionController extends Controller
     public function edit($id)
     {
         //
+        return abort(404);
     }
 
     /**
@@ -76,6 +89,7 @@ class PermisionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return abort(404);
     }
 
     /**
@@ -87,5 +101,6 @@ class PermisionController extends Controller
     public function destroy($id)
     {
         //
+        return abort(404);
     }
 }
