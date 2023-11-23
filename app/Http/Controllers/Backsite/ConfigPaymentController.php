@@ -77,7 +77,7 @@ class ConfigPaymentController extends Controller
     public function edit(ConfigPayment $config_payment)
     {
         //
-        return view('pages.backsite.master-data.config-payment.index', compact('config-payment'));
+        return view('pages.backsite.master-data.config-payment.index', compact('config_payment'));
     }
 
     /**
@@ -107,9 +107,6 @@ class ConfigPaymentController extends Controller
     public function destroy(ConfigPayment $config_payment)
     {
         //
-        $config_payment->delete();
-
-        alert()->success('Sucesss Message', 'Data berhasil dihapus');
-        return back();
+        return abort(404);
     }
 }

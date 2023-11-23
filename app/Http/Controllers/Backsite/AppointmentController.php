@@ -20,6 +20,7 @@ class AppointmentController extends Controller
     public function index()
     {
         //
+
         return view('pages.backsite.operational.appointment.index');
     }
 

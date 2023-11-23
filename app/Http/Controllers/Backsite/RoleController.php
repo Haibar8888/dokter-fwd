@@ -17,6 +17,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 // models
 use App\Models\ManagementAccess\Role;
+use App\Models\ManagementAccess\Permision;
 
 class RoleController extends Controller
 {
@@ -32,6 +33,7 @@ class RoleController extends Controller
     public function index()
     {
         //
+        $role = Role::orderBy('created_at', 'desc')->get();
         return view('pages.backsite.management-access.role.index');
     }
 
@@ -71,6 +73,7 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         //
+        $role->load('permision');
         return view('pages.backsite.management-access.role.show', compact('role'));
     }
 
@@ -83,7 +86,11 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
-        return view('pages.backsite.managemen-access.role.edit', compact('role'));
+        $permision = Permision::all();
+
+        $role->load('permision');
+
+        return view('pages.backsite.managemen-access.role.edit', compact('role', 'permision'));
     }
 
     /**
@@ -99,6 +106,7 @@ class RoleController extends Controller
         $data = $request->all();
 
         $role->update($data);
+        $role->permision()->sync($request->input('permision', []));
 
         alert()->success('Success Message', 'Data berhasil diupdate');
         return redirect()->route('backsite.role.index');
@@ -113,7 +121,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
-        $role->delete();
+        $role->forceDelete();
         alert()->success('Sucesss Message', 'Data berhasil dihapus');
         return back();
     }

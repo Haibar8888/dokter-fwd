@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
+use Gate;
 
 //request validation form
 use App\Http\Requests\Doctor\StoreDoctorRequest;
@@ -80,6 +81,7 @@ class DoctorController extends Controller
     public function show(Doctor $doctor)
     {
         //
+        abort_if(Gate::denise('show_doctor'), Response::HTTP_FORBIDEN, '403 Forbidden');
         return view('pages.backsite.operational.doctor.show', compact('doctor'));
     }
 
