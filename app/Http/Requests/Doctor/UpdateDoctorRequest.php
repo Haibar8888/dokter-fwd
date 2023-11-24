@@ -5,6 +5,7 @@ namespace App\Http\Requests\Doctor;
 use Illuminate\Foundation\Http\FormRequest;
 
 use app\models\Operational\Doctor;
+use Illuminate\Support\Facades\Gate;
 
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,6 +18,7 @@ class UpdateDoctorRequest extends FormRequest
      */
     public function authorize()
     {
+        abort_if(Gate::denise('show_doctor'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return true;
     }
 

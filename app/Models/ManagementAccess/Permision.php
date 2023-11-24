@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Permision extends Model
 {
-     use SoftDeletes;
+    use SoftDeletes;
 
     public $table = 'permision';
 
@@ -27,7 +27,14 @@ class Permision extends Model
         'deleted_at',
     ];
 
-    public function permision_role () {
-        return $this->hasMany('app\Models\ManagementAccess\PermisionRole','permission_id');
+     public function role()
+    {
+        return $this->belongsToMany('App\Models\ManagementAccess\Role');
+    }
+
+    // one to many
+    public function permission_role()
+    {
+        return $this->hasMany('App\Models\ManagementAccess\PermissionRole', 'permission_id');
     }
 }
